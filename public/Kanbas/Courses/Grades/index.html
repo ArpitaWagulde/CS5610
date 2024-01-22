@@ -1,0 +1,67 @@
+<html>
+    <body>
+        <select id="gradetype">
+            <option selected value="gradebook">Gradebook</option>
+            <option value="transcript">Transcript</option>
+            <option value="pending">Pending Approval</option>
+        </select>
+        <button type="button">Import</button>
+        <select id="exporttype">
+            <option selected value="basic">Export</option>
+            <option value="csv">Export as CSV</option>
+            <option value="pdf">Export as PDF</option>
+        </select>
+        <button type="button">Configure</button>
+        <br/>
+        <form id="text-fields">
+            <label for="student-name"><h3>Student Names</h3></label>
+            <input type="text" id="student-name" placeholder="Search Students"/>
+            <br/>
+            <label for="assignment-name"><h3>Assignment Names</h3></label>
+            <input type="text" id="assignment-name" placeholder="Search Assignments"/>
+        </form>
+        <button type="button">Apply Filters</button>
+        <br/><br/>
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>A1 SETUP<br/>Out of 100</th>
+                    <th>A2 HTML<br/>Out of 100</th>
+                    <th>A3 CSS<br/>Out of 100</th>
+                    <th>A4 BOOTSTRAP<br/>Out of 100</th>
+                </tr>
+            </thead>
+            <tbody align=center>
+                <tr>
+                    <td align=left>R2-D2</td>
+                    <td>98</td>
+                    <td><input type="text" id="A2-Grade" size="3" value="90"/></td>
+                    <td>87</td>
+                    <td>92</td>
+                </tr>
+                <tr>
+                    <td align=left>C-3PO</td>
+                    <td>88</td>
+                    <td>98</td>
+                    <td><input type="text" id="A3-Grade" size="3" value="92"/></td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td align=left>Yoda</td>
+                    <td><input type="text" id="A1-Grade" size="3" value="85"/></td>
+                    <td>98</td>
+                    <td>90</td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td align=left>Darth Vader</td>
+                    <td>97</td>
+                    <td>89</td>
+                    <td>90</td>
+                    <td><input type="text" id="A4-Grade" size="3" value="100"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
