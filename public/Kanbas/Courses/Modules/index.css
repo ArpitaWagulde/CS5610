@@ -1,0 +1,68 @@
+.wd-modules,
+.wd-modules * {
+  border-radius: 0%;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.wd-modules {
+  margin: 5px;
+}
+
+.wd-modules > li {
+  background-color: lightgray;
+  border: 1px solid gray !important;
+  border-left: none !important;
+}
+
+.wd-modules > li > div {
+  padding: 12px;
+  border-left: 1px solid gray !important;
+}
+
+.wd-modules > li > div > i {
+    padding: 2px;
+}
+
+.wd-modules > li > ul > li {
+  padding: 10px;
+  border-top: 1px solid gray !important;
+  border-left: 3px solid green;
+}
+
+.wd-modules > li > ul > li > i {
+    padding: 2px;
+}
+
+.wd-modules > li > ul > li > span:not(:first-child) {
+    padding-left: 35px;
+}
+
+.wd-modules > li > ul.list-hyperlinks > li > span > a {
+    color: red;
+}
+
+.wd-modules > li > ul.list-hyperlinks > li > span > i.fa-sign-out {
+    padding-left: 5px;
+    color: red;
+}
+
+.wd-modules > li > ul.list-hyperlinks > li > span:not(:first-child) {
+    padding-left: 0px;
+}
+
+.wd-modules > li > ul.list-hyperlinks > li > i.fa-link {
+    width: 35px;
+    text-align: center;
+    color:green;
+}
+
+.wd-modules > li {
+  margin-bottom: 20px;
+}
+
+.wd-home-buttons > button,select {
+    border-color: #D3D3D3;
+    margin: 2px;
+}
