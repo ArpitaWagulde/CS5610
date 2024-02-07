@@ -1,0 +1,31 @@
+.wd-asmt-edit-home {
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.wd-asmt-edit-content {
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .wd-asmt-edit-content{
+        margin-left: 80px;
+    }
+}
+
+.wd-asmt-edit-buttons > button {
+    border-color: #D3D3D3;
+}
+
+.wd-asmt-edit-buttons > span {
+    padding: 7px;
+    padding-right: 15px !important;
+}
+
+.wd-asmt-edit-home > div > div {
+    padding: 10px;
+}
+
+.wd-asmt-edit-home > div > div > div {
+    text-align: right;
+}

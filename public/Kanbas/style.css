@@ -5,4 +5,88 @@ body {
 body * {
     font-family: Arial, Helvetica, sans-serif;
 }
-  
+
+.wd-top-breadcrumb {
+    padding: 20px;
+    padding-bottom: 0px !important;
+}
+
+.wd-top-breadcrumb > button {
+    margin-right: 25px;
+    border-color: #D3D3D3;
+}
+
+.wd-top-breadcrumb > i {
+    color: red;
+    font-size: 2em;
+    padding-left: 10px;
+    padding-right: 25px;
+}
+
+.wd-top-breadcrumb > nav > ol > li > a {
+    color:red;
+    text-decoration: none;
+}
+
+.wd-top-breadcrumb > nav {
+    font-size: 1.2em;
+    align-items:center;
+    padding-top: 3px;
+}
+
+#wd-top-kanbas-nav, #wd-top-course-nav {
+    height: 100vh;
+    width: 100wh;
+}
+
+#wd-top-kanbas-nav > ul {
+    list-style: none;
+    padding-top: 20px;
+}
+
+#wd-top-kanbas-nav > ul > li > a > i {
+    margin: 20px;
+}
+
+#wd-top-kanbas-nav > ul > li > a {
+    font-size: 1.3em;
+    color: red;
+    text-decoration: none;
+}
+
+#wd-top-course-nav > ul {
+    list-style: none;
+    padding-top: 10px;
+}
+
+#wd-top-course-nav > ul > li > a {
+    font-size: 1em;
+    color: red;
+    text-decoration: none;
+}
+
+#wd-top-course-nav > ul > li > a > i {
+    margin: 7px;
+}
+
+#wd-top-course-nav > ul > li > i {
+    color: gray;
+    padding-left: 20px;
+}
+
+.wd-hr-breadcrumb {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.wd-top-nav-bar {
+    right:0;
+    left: 0;
+    padding: 10px;;
+  }
+
+.wd-kanbas-nav {
+    position: fixed;
+    top:0;
+    bottom:0;
+}

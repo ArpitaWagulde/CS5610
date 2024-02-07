@@ -14,14 +14,39 @@
 }
 
 .wd-course-status {
-    margin-left: 40px;
+    margin-left: 30px;
+    margin-right: 10px !important;
+}
+
+.wd-coming-up-list {
+    padding-inline-start: 10px;
 }
 
 .wd-coming-up-list > li {
     margin-left: 0px !important;
     padding-left: 0px !important;
+    padding-bottom: 10px;
+}
+
+.wd-coming-up-list > li > i {
+    padding: 3px;
 }
 
 .wd-coming-up-list > li > a {
     color: red !important;
+}
+
+.wd-coming-up-list > li > small {
+    margin-left: 20px !important;
+    color: gray;
+}
+
+.wd-course-home-content {
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .wd-course-home-content{
+        margin-left: 80px;
+    }
 }
