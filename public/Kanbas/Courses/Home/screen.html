@@ -13,8 +13,8 @@
     </head>
     <body>
         <div>
-            <div id="wd-top-kanbas-nav" class="collapse" data-bs-toggle="collapse" data-bs-target="#wd-top-kanbas-nav" aria-expanded="false" aria-controls="wd-top-kanbas-nav">
-                <button style="float:right; border: none; background: none;">
+            <div id="wd-top-kanbas-nav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="wd-top-kanbas-nav">
+                <button data-bs-dismiss="offcanvas" style="float:right; border: none; background: none; text-align: end;">
                     <i style="padding: 20px; font-size: 1.2em;" class="fa fa-close"></i>
                 </button>
                 <ul>
@@ -52,10 +52,10 @@
                     </li>
                 </ul>
             </div>
-            <div id="wd-top-course-nav" class="collapse" data-bs-toggle="collapse" data-bs-target="#wd-top-course-nav" aria-expanded="false" aria-controls="wd-top-course-nav">
+            <div id="wd-top-course-nav" class="offcanvas offcanvas-top" tabindex="-1" aria-labelledby="wd-top-course-nav">
                 <div class="d-flex d-block d-md-none wd-top-nav-bar bg-black">
                     <div class="col-3">
-                        <button type="button" style="border: none; background: none;" data-bs-toggle="collapse" data-bs-target="#wd-top-kanbas-nav" aria-expanded="false" aria-controls="wd-top-kanbas-nav">
+                        <button type="button" style="border: none; background: none;" data-bs-toggle="offcanvas" data-bs-target="#wd-top-kanbas-nav" aria-controls="wd-top-kanbas-nav">
                             <i style="padding: 20px; font-size: 1.2em; color:white;" class="fa-solid fa-bars"></i>
                         </button>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="col-3">
                         <span style="position:absolute; right:0; font-size: 1.2em; color:white;">
                             <i style="padding: 20px; padding-right: 10px !important;" class="fa fa-glasses"></i>
-                            <button style="float:right; border: none; background: none;">
+                            <button data-bs-dismiss="offcanvas" style="float:right; border: none; background: none;">
                                 <i style="color:white; padding: 20px; font-size: 1.2em;" class="fa fa-close"></i>
                             </button>
                         </span>
@@ -145,7 +145,7 @@
             </div>
             <div class="d-flex d-block d-md-none wd-top-nav-bar bg-black">
                 <div class="col-3">
-                    <button type="button" style="border: none; background: none;" data-bs-toggle="collapse" data-bs-target="#wd-top-kanbas-nav" aria-expanded="false" aria-controls="wd-top-kanbas-nav">
+                    <button type="button" style="border: none; background: none;"  data-bs-toggle="offcanvas" data-bs-target="#wd-top-kanbas-nav" aria-controls="wd-top-kanbas-nav">
                         <i style="padding: 20px; font-size: 1.2em; color:white;" class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -159,7 +159,7 @@
                 <div class="col-3">
                     <span style="position:absolute; right:0; font-size: 1.2em; color:white;">
                         <i style="padding: 20px; padding-right: 10px !important;" class="fa fa-glasses"></i>
-                        <button type="button" style="border: none; background: none;" data-bs-toggle="collapse" data-bs-target="#wd-top-course-nav" aria-expanded="false" aria-controls="wd-top-course-nav">
+                        <button type="button" style="border: none; background: none;" data-bs-toggle="offcanvas" data-bs-target="#wd-top-course-nav" aria-controls="wd-top-course-nav">
                             <i style="color: white; padding: 20px; padding-left: 10px !important;" class="fa-solid fa-chevron-down"></i>
                         </button>
                     </span>

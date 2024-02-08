@@ -1,0 +1,35 @@
+.wd-grade-home-buttons > button {
+    border-color: #D3D3D3;
+    margin: 5px;
+}
+
+.wd-grade-content {
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .wd-grade-content{
+        margin-left: 80px;
+    }
+}
+
+.wd-grade-home {
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.wd-grade-table > table > tbody > tr > td {
+    border:1px solid;
+    border-collapse: collapse;
+    border-color: #DEDDDD;
+    vertical-align: middle;
+}
+
+.wd-grade-table > table {
+    text-align: center;
+}
+
+.wd-grade-table > table > tbody > tr > td > a {
+    text-decoration: none;
+    color: red;
+}
