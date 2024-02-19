@@ -6,8 +6,8 @@ import Assignment4 from "./a4";
 function Labs() {
   return (
     <div className="container-fluid">
-      <h1>Labs</h1>
       <Nav />
+      <h1>Labs</h1>
       <Link to="/Labs/a3">Assignment 3</Link> |
       <Link to="/Labs/a4">Assignment 4</Link>
       <Routes>
