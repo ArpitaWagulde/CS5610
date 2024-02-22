@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "A101",
+    "title": "A1 - ENV + HTML",
+    "course": "CS101",
+    "coverage": "Multiple Modules",
+    "due": "Sep 18 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A102",
+    "title": "A2 - CSS + Bootstrap",
+    "course": "CS101",
+    "coverage": "Multiple Modules",
+    "due": "Sep 25 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A103",
+    "title": "A3 - JS + REACT",
+    "course": "CS101",
+    "coverage": "Multiple Modules",
+    "due": "Oct 1 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A201",
+    "title": "A1 - Strings",
+    "course": "CS102",
+    "coverage": "Module 2",
+    "due": "Jan 8 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A202",
+    "title": "A2 - Linked List",
+    "course": "CS102",
+    "coverage": "Module 3",
+    "due": "Jan 18 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A203",
+    "title": "A3 - Hash Tables",
+    "course": "CS102",
+    "coverage": "Module 4",
+    "due": "Feb 11 at 11:59pm",
+    "weightage": "100"
+  },
+  {
+    "_id": "A301",
+    "title": "A1 - Asymptotic Notations",
+    "course": "CS103",
+    "coverage": "Module 1",
+    "due": "Feb 8 at 11:59pm",
+    "weightage": "120"
+  },
+  {
+    "_id": "A302",
+    "title": "A2 - Divide and Conquer",
+    "course": "CS103",
+    "coverage": "Module 2",
+    "due": "Feb 15 at 11:59pm",
+    "weightage": "110"
+  },
+  {
+    "_id": "A303",
+    "title": "A3 - Recursion",
+    "course": "CS103",
+    "coverage": "Module 3",
+    "due": "Feb 22 at 11:59pm",
+    "weightage": "100"
+  }
+]
