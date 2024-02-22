@@ -4,7 +4,7 @@ function Dashboard() {
   return (
     <div className="p-4">
       <h1>Dashboard</h1> <hr />
-      <h2>Published Courses (5)</h2> <hr />
+      <h2>Published Courses ({courses.length})</h2> <hr />
       <div className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {courses.map((course) => (
@@ -14,6 +14,7 @@ function Dashboard() {
                   src={`/images/${course.image}`}
                   className="card-img-top"
                   style={{ height: 150 }}
+                  alt=""
                 />
                 <div className="card-body" style={{ height: 160 }}>
                   <Link

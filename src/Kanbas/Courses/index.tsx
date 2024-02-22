@@ -1,16 +1,9 @@
-import { courses } from "../../Kanbas/Database";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CourseNavigation, { CourseMobileNavigation } from "./Navigation";
 import Modules from "./Modules";
 import "./index.css";
 import Home from "./Home";
-import Breadcrumb from "./Breadcrumb";
+import Breadcrumb, { MobileBreadcrumb } from "./Breadcrumb";
 import { FaBars, FaGlasses, FaX } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa";
 import { KanbasMobileNavigation } from "../Navigation";
@@ -19,20 +12,6 @@ import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 
 function Courses() {
-  const { courseId } = useParams();
-  const { pathname } = useLocation();
-  const currLocation = pathname.split("/")[4];
-  const course = courses.find((course) => course._id === courseId);
-  const BreadcrumbLinks = [
-    {
-      label: `${course?.number} ${course?.name}`,
-      link: `/Kanbas/Courses/${courseId}/Home`,
-    },
-    {
-      label: { currLocation },
-      link: `/Kanbas/Courses/${courseId}/Home/${currLocation}`,
-    },
-  ];
   return (
     <>
       <div
@@ -55,11 +34,7 @@ function Courses() {
             </button>
           </div>
           <div className="col-6" style={{ textAlign: "center" }}>
-            <span style={{ textDecoration: "none", color: "white" }}>
-              {course?.number}.{course?.name}
-              <br />
-              {currLocation.includes("Home") ? "Modules" : currLocation}
-            </span>
+            <MobileBreadcrumb />
           </div>
           <div className="col-3">
             <span
@@ -106,11 +81,7 @@ function Courses() {
           </button>
         </div>
         <div className="col-6" style={{ textAlign: "center" }}>
-          <span style={{ textDecoration: "none", color: "white" }}>
-            {course?.number}.{course?.name}
-            <br />
-            {currLocation.includes("Home") ? "Modules" : currLocation}
-          </span>
+          <MobileBreadcrumb />
         </div>
         <div className="col-3">
           <span
@@ -142,12 +113,7 @@ function Courses() {
       </div>
       <div className="wd-course-content">
         <div className="d-none d-md-inline-flex wd-top-breadcrumb">
-          <Breadcrumb
-            courseId={course?._id}
-            courseNumber={course?.number}
-            courseName={course?.name}
-            currNav={currLocation}
-          />
+          <Breadcrumb />
         </div>
         <div className="d-none d-md-block wd-hr-breadcrumb">
           <hr />
