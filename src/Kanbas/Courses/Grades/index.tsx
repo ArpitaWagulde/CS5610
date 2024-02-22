@@ -64,7 +64,7 @@ function Grades() {
       <div className="wd-grade-table table-responsive m-2">
         <table className="table table-striped">
           <thead>
-            <th>Student Name</th>
+            <th style={{ padding: "0.5rem" }}>Student Name</th>
             {as.map((assignment) => (
               <th>{assignment.title}</th>
             ))}
