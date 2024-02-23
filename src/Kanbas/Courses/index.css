@@ -23,6 +23,10 @@
   text-decoration: none;
 }
 
+.wd-top-breadcrumb > nav > ol > li.active > a {
+  color: black;
+}
+
 .wd-top-breadcrumb > nav {
   font-size: 1.2em;
   align-items: center;

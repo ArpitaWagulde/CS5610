@@ -5,7 +5,7 @@ import { courses, assignments } from "../../../Kanbas/Database";
 function Breadcrumb() {
   const { courseId } = useParams();
   const { pathname } = useLocation();
-  const currLocation = pathname.split("/")[4];
+  const currLocation = pathname.split("/")[4].replace(/%20/g, " ");
   const assignmentId = pathname.split("/")[5];
   const course = courses.find((course) => course._id === courseId);
   const assignment = assignments.find(
@@ -21,20 +21,25 @@ function Breadcrumb() {
               {course?.number} {course?.name}
             </Link>
           </li>
-
-          {currLocation === "Assignments" ? (
+          {assignment ? (
             <>
               <li className="breadcrumb-item" aria-current="page">
-                {currLocation}
+                <Link to={`/Kanbas/Courses/${courseId}/${currLocation}`}>
+                  {currLocation === "Home" ? "Modules" : currLocation}
+                </Link>
               </li>
-              <li className="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item" aria-current="page">
                 {assignment?.title}
               </li>
             </>
           ) : (
-            <li className="breadcrumb-item active" aria-current="page">
-              {currLocation === "Home" ? "Modules" : currLocation}
-            </li>
+            <>
+              <li className="breadcrumb-item active" aria-current="page">
+                <Link to={`/Kanbas/Courses/${courseId}/${currLocation}`}>
+                  {currLocation === "Home" ? "Modules" : currLocation}
+                </Link>
+              </li>
+            </>
           )}
         </ol>
       </nav>

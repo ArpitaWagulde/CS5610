@@ -98,5 +98,35 @@
     "email": "harry@potter.com",
     "dob": "2000-10-20",
     "role": "STUDENT"
+  },
+  {
+    "_id": "131",
+    "username": "hermione_granger",
+    "password": "hermione123",
+    "firstName": "Hermione",
+    "lastName": "Granger",
+    "email": "hermione@granger.com",
+    "dob": "1979-09-19",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "132",
+    "username": "ron_weasley",
+    "password": "ron123",
+    "firstName": "Ron",
+    "lastName": "Weasley",
+    "email": "ron@weasley.com",
+    "dob": "1980-03-01",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "133",
+    "username": "gandalf",
+    "password": "grey123",
+    "firstName": "Gandalf",
+    "lastName": "The Grey",
+    "email": "gandalf@wizard.com",
+    "dob": "1000-01-01",
+    "role": "STUDENT"
   }
 ]

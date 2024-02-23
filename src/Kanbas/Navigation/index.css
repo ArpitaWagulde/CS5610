@@ -31,3 +31,8 @@
   font-size: 2em;
   margin-bottom: 5px;
 }
+
+.wd-kanbas-navigation li svg {
+  font-size: x-small;
+  color: red;
+}
