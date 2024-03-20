@@ -4,7 +4,6 @@ import { modules } from "../../Database";
 import {
   FaEllipsisV,
   FaCheckCircle,
-  FaPlusCircle,
   FaPlus,
   FaRegCheckCircle,
 } from "react-icons/fa";

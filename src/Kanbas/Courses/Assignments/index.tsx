@@ -1,4 +1,4 @@
-import { FaCheckCircle, FaEllipsisV, FaPlusCircle } from "react-icons/fa";
+import { FaCheckCircle, FaEllipsisV } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { assignments } from "../../Database";
 import { FaFilePen, FaPlus } from "react-icons/fa6";
