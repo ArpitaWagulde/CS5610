@@ -66,10 +66,10 @@ function CourseStatus() {
         ))}
       </ul>
       <br />
-      <h5>To Do</h5>
-      <hr />
       {courseList.map((course) => (
         <>
+          <h5>To Do</h5>
+          <hr />
           <ul style={{ listStyleType: "none", paddingInlineStart: "0px" }}>
             {course.todo?.map((todoItem) => (
               <li style={{ color: "red" }}>

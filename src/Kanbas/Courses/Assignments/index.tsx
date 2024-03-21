@@ -1,15 +1,54 @@
 import { FaCheckCircle, FaEllipsisV } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
-import { assignments } from "../../Database";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaFilePen, FaPlus } from "react-icons/fa6";
 import "./index.css";
+import { useSelector, useDispatch } from "react-redux";
+import { KanbasState } from "../../store";
+import { deleteAssignment, setAssignment } from "./reducer";
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 function Assignments() {
   const { courseId } = useParams();
-  const assignmentList = assignments.filter(
-    (assignment) => assignment.course === courseId
+  const assignmentList = useSelector((state: KanbasState) =>
+    state.assignmentsReducer.assignments.filter(
+      (assignment) => assignment.course === courseId
+    )
   );
+  const assignment = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignment
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  console.log(assignmentList);
+
   return (
     <div className="flex-fill">
+      <Modal show={show} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Assignment</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this assignment?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            onClick={() => {
+              dispatch(deleteAssignment(assignment._id));
+              setShow(false);
+            }}
+          >
+            Ok
+          </Button>
+          <Button variant="secondary" onClick={() => setShow(false)}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div
         style={{ justifySelf: "stretch" }}
         className="d-flex wd-asmt-home-buttons justify-content-between m-2"
@@ -27,6 +66,13 @@ function Assignments() {
             type="button"
             className="btn btn-light"
             style={{ backgroundColor: "red", color: "white" }}
+            onClick={() => {
+              navigate(
+                `/Kanbas/Courses/${courseId}/Assignments/${
+                  "A" + new Date().getTime().toString()
+                }`
+              );
+            }}
           >
             <FaPlus className="ms-2" /> Assignment
           </button>
@@ -75,6 +121,16 @@ function Assignments() {
                   </div>
                   <div className="ms-auto" style={{ alignSelf: "center" }}>
                     <span>
+                      <button
+                        onClick={() => {
+                          dispatch(setAssignment(assignment));
+                          setShow(true);
+                        }}
+                        className="btn btn-danger m-2 p-1"
+                        style={{ borderRadius: "0.375rem" }}
+                      >
+                        Delete
+                      </button>
                       <FaCheckCircle className="text-success" />
                       <FaEllipsisV className="ms-2" />
                     </span>

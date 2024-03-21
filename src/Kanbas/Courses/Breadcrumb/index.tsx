@@ -2,12 +2,10 @@ import { FaBars, FaGlasses } from "react-icons/fa";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { courses, assignments } from "../../../Kanbas/Database";
 
-function Breadcrumb() {
-  const { courseId } = useParams();
+function Breadcrumb({ course }: { course: any }) {
   const { pathname } = useLocation();
   const currLocation = pathname.split("/")[4].replace(/%20/g, " ");
   const assignmentId = pathname.split("/")[5];
-  const course = courses.find((course) => course._id === courseId);
   const assignment = assignments.find(
     (assignment) => assignment._id === assignmentId
   );
@@ -17,14 +15,16 @@ function Breadcrumb() {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <Link to={`/Kanbas/Courses/${courseId}/Home`}>
+            <Link to={`/Kanbas/Courses/${course?.courseId}/Home`}>
               {course?.number} {course?.name}
             </Link>
           </li>
           {assignment ? (
             <>
               <li className="breadcrumb-item" aria-current="page">
-                <Link to={`/Kanbas/Courses/${courseId}/${currLocation}`}>
+                <Link
+                  to={`/Kanbas/Courses/${course?.courseId}/${currLocation}`}
+                >
                   {currLocation === "Home" ? "Modules" : currLocation}
                 </Link>
               </li>
@@ -35,7 +35,9 @@ function Breadcrumb() {
           ) : (
             <>
               <li className="breadcrumb-item active" aria-current="page">
-                <Link to={`/Kanbas/Courses/${courseId}/${currLocation}`}>
+                <Link
+                  to={`/Kanbas/Courses/${course?.courseId}/${currLocation}`}
+                >
                   {currLocation === "Home" ? "Modules" : currLocation}
                 </Link>
               </li>
@@ -54,12 +56,10 @@ function Breadcrumb() {
   );
 }
 
-function MobileBreadcrumb() {
-  const { courseId } = useParams();
+function MobileBreadcrumb({ course }: { course: any }) {
   const { pathname } = useLocation();
   const currLocation = pathname.split("/")[4];
   const assignmentId = pathname.split("/")[5];
-  const course = courses.find((course) => course._id === courseId);
   const assignment = assignments.find(
     (assignment) => assignment._id === assignmentId
   );

@@ -1,34 +1,72 @@
+import { useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { assignments } from "../../../Database";
 import "./index.css";
+import { addAssignment, setAssignment, updateAssignment } from "../reducer";
+import { useSelector, useDispatch } from "react-redux";
+import { KanbasState } from "../../../store";
 
 function AssignmentEditor() {
-  const { assignmentId } = useParams();
-  const assignment = assignments.find(
+  const { courseId, assignmentId } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const assignments = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignments
+  );
+
+  const assignment = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignment
+  );
+
+  const existsAssignment = assignments.find(
     (assignment) => assignment._id === assignmentId
   );
-  const { courseId } = useParams();
-  const navigate = useNavigate();
-  const handleSave = () => {
-    console.log("Actually saving assignment TBD in later assignments");
-    navigate(`/Kanbas/Courses/${courseId}/Assignments`);
-  };
+
+  useEffect(() => {
+    if (existsAssignment !== undefined) {
+      dispatch(setAssignment(existsAssignment));
+    } else {
+      dispatch(setAssignment([]));
+    }
+  }, []);
+
   return (
     <div className="wd-asmt-edit-home flex-fill">
       <h3>Assignment Name</h3>
       <input
         className="form-control"
         id="assignment-name"
+        onChange={(e) =>
+          dispatch(setAssignment({ ...assignment, title: e.target.value }))
+        }
         value={assignment?.title}
       />
       <br />
-      <textarea style={{ height: "10%" }} className="form-control"></textarea>
+      <textarea
+        style={{ height: "10%" }}
+        className="form-control"
+        onChange={(e) =>
+          dispatch(
+            setAssignment({ ...assignment, description: e.target.value })
+          )
+        }
+      >
+        {assignment?.description}
+      </textarea>
       <br />
       <div>
         <div className="row">
           <div className="col-3">Points</div>
           <div className="col-9">
-            <input className="form-control" value={assignment?.weightage} />
+            <input
+              className="form-control"
+              value={assignment?.weightage}
+              onChange={(e) =>
+                dispatch(
+                  setAssignment({ ...assignment, weightage: e.target.value })
+                )
+              }
+            />
           </div>
         </div>
         <div className="row">
@@ -93,7 +131,12 @@ function AssignmentEditor() {
                 className="m-2 form-control"
                 type="date"
                 id="due"
-                value="2021-01-01"
+                value={assignment?.due}
+                onChange={(e) =>
+                  dispatch(
+                    setAssignment({ ...assignment, due: e.target.value })
+                  )
+                }
               />
               <div className="row">
                 <div className="col-6">
@@ -150,7 +193,19 @@ function AssignmentEditor() {
               style={{ float: "right", paddingBottom: "2px" }}
             >
               <button
-                onClick={handleSave}
+                onClick={() => {
+                  existsAssignment === undefined
+                    ? dispatch(
+                        addAssignment({
+                          ...assignment,
+                          course: courseId,
+                          _id: assignmentId,
+                          coverage: "Multiple Modules",
+                        })
+                      )
+                    : dispatch(updateAssignment(assignment));
+                  navigate(`/Kanbas/Courses/${courseId}/Assignments`);
+                }}
                 className="btn btn-success ms-2 float-end"
               >
                 Save

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import CourseNavigation, { CourseMobileNavigation } from "./Navigation";
 import Modules from "./Modules";
 import "./index.css";
@@ -11,7 +11,9 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 
-function Courses() {
+function Courses({ courses }: { courses: any[] }) {
+  const { courseId } = useParams();
+  const course = courses.find((course) => course._id === courseId);
   return (
     <>
       <div
@@ -34,7 +36,7 @@ function Courses() {
             </button>
           </div>
           <div className="col-6" style={{ textAlign: "center" }}>
-            <MobileBreadcrumb />
+            <MobileBreadcrumb course={course} />
           </div>
           <div className="col-3">
             <span
@@ -81,7 +83,7 @@ function Courses() {
           </button>
         </div>
         <div className="col-6" style={{ textAlign: "center" }}>
-          <MobileBreadcrumb />
+          <MobileBreadcrumb course={course} />
         </div>
         <div className="col-3">
           <span
@@ -113,7 +115,7 @@ function Courses() {
       </div>
       <div className="wd-course-content">
         <div className="d-none d-md-inline-flex wd-top-breadcrumb">
-          <Breadcrumb />
+          <Breadcrumb course={course} />
         </div>
         <div className="d-none d-md-block wd-hr-breadcrumb">
           <hr />
