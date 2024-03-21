@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./index.css";
-import { modules } from "../../Database";
 import {
   FaEllipsisV,
   FaCheckCircle,

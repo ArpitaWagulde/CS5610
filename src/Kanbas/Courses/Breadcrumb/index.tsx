@@ -1,6 +1,6 @@
 import { FaBars, FaGlasses } from "react-icons/fa";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { courses, assignments } from "../../../Kanbas/Database";
+import { Link, useLocation } from "react-router-dom";
+import { assignments } from "../../../Kanbas/Database";
 
 function Breadcrumb({ course }: { course: any }) {
   const { pathname } = useLocation();
