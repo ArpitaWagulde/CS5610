@@ -4,17 +4,16 @@ import { FaFilePen, FaPlus } from "react-icons/fa6";
 import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { KanbasState } from "../../store";
-import { deleteAssignment, setAssignment } from "./reducer";
-import { useState } from "react";
+import { deleteAssignment, setAssignment, setAssignments } from "./reducer";
+import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import * as service from "./service";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignmentList = useSelector((state: KanbasState) =>
-    state.assignmentsReducer.assignments.filter(
-      (assignment) => assignment.course === courseId
-    )
+  const assignmentList = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignments
   );
   const assignment = useSelector(
     (state: KanbasState) => state.assignmentsReducer.assignment
@@ -23,7 +22,16 @@ function Assignments() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
-  console.log(assignmentList);
+  const handleDeleteAssignment = (assignmentId: string) => {
+    service.deleteAssignment(assignmentId).then((status) => {
+      dispatch(deleteAssignment(assignmentId));
+    });
+  };
+  useEffect(() => {
+    service.findAssignmentsForCourse(courseId).then((assignments) => {
+      dispatch(setAssignments(assignments));
+    });
+  }, [courseId]);
 
   return (
     <div className="flex-fill">
@@ -38,7 +46,7 @@ function Assignments() {
           <Button
             variant="primary"
             onClick={() => {
-              dispatch(deleteAssignment(assignment._id));
+              handleDeleteAssignment(assignment._id);
               setShow(false);
             }}
           >

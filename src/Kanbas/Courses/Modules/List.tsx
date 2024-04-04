@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
 import {
   FaEllipsisV,
@@ -8,22 +8,44 @@ import {
 } from "react-icons/fa";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { addModule, deleteModule, updateModule, setModule } from "./reducer";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+  setModules,
+} from "./reducer";
 import { KanbasState } from "../../store";
+import * as client from "./client";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const moduleList = useSelector(
+  const modulesList = useSelector(
     (state: KanbasState) => state.modulesReducer.modules
   );
-  console.log(moduleList);
-  console.log(courseId);
-  const modulesList = moduleList.filter((module) => module.course === courseId);
-  console.log(modulesList);
   const [selectedModule, setSelectedModule] = useState(modulesList[0]);
   const module = useSelector(
     (state: KanbasState) => state.modulesReducer.module
   );
+  const handleAddModule = () => {
+    client.createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+  const handleDeleteModule = (moduleId: string) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+  const handleUpdateModule = async () => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+  useEffect(() => {
+    client
+      .findModulesForCourse(courseId)
+      .then((modules) => dispatch(setModules(modules)));
+  }, [courseId]);
   const dispatch = useDispatch();
 
   return (
@@ -73,16 +95,10 @@ function ModuleList() {
       </div>
       <hr className="m-2" />
       <br />
-      <button
-        onClick={() => dispatch(addModule({ ...module, course: courseId }))}
-        className="btn btn-success m-2"
-      >
+      <button onClick={handleAddModule} className="btn btn-success m-2">
         Add
       </button>
-      <button
-        onClick={() => dispatch(updateModule(module))}
-        className="btn btn-primary m-2"
-      >
+      <button onClick={handleUpdateModule} className="btn btn-primary m-2">
         Update
       </button>
       <input
@@ -111,7 +127,7 @@ function ModuleList() {
               {module.name}
               <span className="float-end">
                 <button
-                  onClick={() => dispatch(deleteModule(module?._id))}
+                  onClick={() => handleDeleteModule(module._id)}
                   className="btn btn-danger me-2 p-1"
                   style={{ borderRadius: "0.375rem" }}
                 >

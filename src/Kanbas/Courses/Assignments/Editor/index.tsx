@@ -4,6 +4,7 @@ import "./index.css";
 import { addAssignment, setAssignment, updateAssignment } from "../reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { KanbasState } from "../../../store";
+import * as service from "../service";
 
 function AssignmentEditor() {
   const { courseId, assignmentId } = useParams();
@@ -21,7 +22,16 @@ function AssignmentEditor() {
   const existsAssignment = assignments.find(
     (assignment) => assignment._id === assignmentId
   );
-
+  const handleAddAssignment = () => {
+    service.createAssignment(courseId, assignment).then((assignment) => {
+      dispatch(addAssignment(assignment));
+    });
+  };
+  const handleUpdateAssignment = async () => {
+    const status = await service.updateAssignment(assignment);
+    console.log("in editor", assignment);
+    dispatch(updateAssignment(assignment));
+  };
   useEffect(() => {
     if (existsAssignment !== undefined) {
       dispatch(setAssignment(existsAssignment));
@@ -195,15 +205,8 @@ function AssignmentEditor() {
               <button
                 onClick={() => {
                   existsAssignment === undefined
-                    ? dispatch(
-                        addAssignment({
-                          ...assignment,
-                          course: courseId,
-                          _id: assignmentId,
-                          coverage: "Multiple Modules",
-                        })
-                      )
-                    : dispatch(updateAssignment(assignment));
+                    ? handleAddAssignment()
+                    : handleUpdateAssignment();
                   navigate(`/Kanbas/Courses/${courseId}/Assignments`);
                 }}
                 className="btn btn-success ms-2 float-end"
