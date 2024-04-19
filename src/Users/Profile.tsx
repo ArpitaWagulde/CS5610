@@ -32,7 +32,7 @@ export default function Profile() {
     const dateObject = new Date(dateString);
     const year = dateObject.getFullYear();
     const month = String(dateObject.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObject.getDate()).padStart(2, "0");
+    const day = String(dateObject.getDate() + 1).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -88,6 +88,7 @@ export default function Profile() {
           />
           <select
             className="form-control w-25"
+            value={[profile.role]}
             onChange={(e) => setProfile({ ...profile, role: e.target.value })}
           >
             <option value="USER">User</option>
