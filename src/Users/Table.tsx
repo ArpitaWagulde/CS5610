@@ -25,9 +25,7 @@ export default function UserTable() {
   };
   const createUser = async () => {
     try {
-      console.log("createuser called", user);
       const newUser = await client.createUser(user);
-      console.log("newUser", newUser);
       setUsers([newUser, ...users]);
     } catch (err) {
       console.log(err);

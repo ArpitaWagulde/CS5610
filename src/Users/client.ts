@@ -27,7 +27,6 @@ export const findAllUsers = async () => {
 };
 export const createUser = async (user: any) => {
   const response = await axios.post(`${USERS_API}`, user);
-  console.log("data", response.data);
   return response.data;
 };
 export const deleteUser = async (user: any) => {
