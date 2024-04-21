@@ -14,14 +14,11 @@ export interface User {
   lastName: string;
 }
 export const signin = async (credentials: User) => {
-  const response = await axiosWithCredentials.post(
-    `${USERS_API}/signin`,
-    credentials
-  );
+  const response = await axiosWithCredentials.post(`/signin`, credentials);
   return response.data;
 };
 export const profile = async () => {
-  const response = await axiosWithCredentials.post(`${USERS_API}/profile`);
+  const response = await axiosWithCredentials.post(`/profile`);
   return response.data;
 };
 export const updateUser = async (user: any) => {
@@ -29,25 +26,23 @@ export const updateUser = async (user: any) => {
   return response.data;
 };
 export const findAllUsers = async () => {
-  const response = await axiosWithCredentials.get(`${USERS_API}`);
+  const response = await axiosWithCredentials.get(``);
   return response.data;
 };
 export const createUser = async (user: any) => {
-  const response = await axiosWithCredentials.post(`${USERS_API}`, user);
+  const response = await axiosWithCredentials.post(``, user);
   return response.data;
 };
 export const deleteUser = async (user: any) => {
-  const response = await axiosWithCredentials.delete(
-    `${USERS_API}/${user._id}`
-  );
+  const response = await axiosWithCredentials.delete(`/${user._id}`);
   return response.data;
 };
 export const findUserById = async (id: string) => {
-  const response = await axiosWithCredentials.get(`${USERS_API}/${id}`);
+  const response = await axiosWithCredentials.get(`/${id}`);
   return response.data;
 };
 export const findUsersByRole = async (role: string) => {
-  const response = await axiosWithCredentials.get(`${USERS_API}?role=${role}`);
+  const response = await axiosWithCredentials.get(`?role=${role}`);
   return response.data;
 };
 export const signup = async (user: any) => {
@@ -55,6 +50,6 @@ export const signup = async (user: any) => {
   return response.data;
 };
 export const signout = async () => {
-  const response = await axiosWithCredentials.post(`${USERS_API}/signout`);
+  const response = await axiosWithCredentials.post(`/signout`);
   return response.data;
 };
